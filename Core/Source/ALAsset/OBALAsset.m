@@ -35,15 +35,27 @@
 	return [UIImage imageWithCGImage:_asset.thumbnail];
 }
 
-- (UIImage *)image {
+- (UIImage *)originalImage {
 	ALAssetRepresentation *assetRepresentation = [_asset defaultRepresentation];
 
-	CGImageRef imageRef = [assetRepresentation fullScreenImage];
+	CGImageRef imageRef = [assetRepresentation fullResolutionImage];
 	return [UIImage imageWithCGImage:imageRef
-	                           scale:[UIScreen mainScreen].scale
+	                           scale:assetRepresentation.scale
 			                 orientation:(UIImageOrientation) assetRepresentation.orientation];
 }
 
+- (UIImage *)fullScreenImage {
+    ALAssetRepresentation *assetRepresentation = [_asset defaultRepresentation];
+    
+    CGImageRef imageRef = [assetRepresentation fullScreenImage];
+    return [UIImage imageWithCGImage:imageRef
+                               scale:[UIScreen mainScreen].scale
+                         orientation:UIImageOrientationUp];
+}
+
+- (UIImage *)image {
+    return [self fullScreenImage];
+}
 
 - (BOOL)isVideo {
 	return [_asset valueForProperty:ALAssetPropertyType] == ALAssetTypeVideo;

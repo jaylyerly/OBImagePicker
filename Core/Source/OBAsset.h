@@ -19,9 +19,23 @@
 @property (nonatomic, readonly) UIImage *thumbnailImage;
 
 /*
-	@returns the image representation of the asset. If the asset is a video nil is returne
+	@returns the image representation of the asset. If the asset is a video nil is returned.
+            This is the 'fullScreenImage' as below.
  */
 @property (nonatomic, readonly) UIImage *image;
+
+/*
+	@returns the image representation of the asset. If the asset is a video nil is returned.
+            This is the orginal camera image -- the biggest and best represeation available.
+ */
+@property (nonatomic, readonly) UIImage *originalImage;
+
+/*
+	@returns the 'fullScreen' representation of the asset. If the asset is a video nil is returned.
+            The image is fully cropped, rotated and adjusted, exactly as a user would see in Photos
+            or the image picker.
+ */
+@property (nonatomic, readonly) UIImage *fullScreenImage;
 
 /*
 	@returns YES if the asset is a video, otherwise NO
