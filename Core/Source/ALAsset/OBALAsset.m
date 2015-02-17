@@ -79,7 +79,7 @@
 }
 
 
-- (void)saveToFile:(NSString *)path error:(NSError **)error {
+- (BOOL)saveToFile:(NSString *)path error:(NSError **)error {
 	ALAssetRepresentation *assetRepresentation = _asset.defaultRepresentation;
 
 	[[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
@@ -94,7 +94,7 @@
 			if (error != NULL) {
 				*error = internalError;
 			}
-			return;
+			return NO;
 		}
 		offset += readByteLength;
 
@@ -102,6 +102,8 @@
 	}
 	while (offset < assetRepresentation.size);
 	[_fileHandle closeFile];
+    
+    return YES;
 }
 
 @end

@@ -65,8 +65,11 @@
 
 /*
 * This methods saves the asset to the given file. If the file exists it is overwritten
+*
+*   @return YES if successful, NO indicates an error occurred.
+*
 */
-- (void)saveToFile:(NSString *)path error:(NSError **)error;
+- (BOOL)saveToFile:(NSString *)path error:(NSError **)error;
 
 
 @end

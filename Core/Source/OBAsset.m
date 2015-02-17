@@ -13,8 +13,8 @@
 
 }
 
-- (void)saveToFile:(NSString *)path error:(NSError **)error {
-
+- (BOOL)saveToFile:(NSString *)path error:(NSError **)error {
+    return YES;
 }
 
 - (BOOL)isEqual:(id)other {
