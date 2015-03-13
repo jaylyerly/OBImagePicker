@@ -109,7 +109,8 @@
 	__weak OBAssetPickerViewController *weakSelf = self;
 	[self.photoLibrary fetchPhotosForCollection:self.collection completion:^(NSArray *result, NSError *error) {
 	    if (result) {
-		    weakSelf.photos = result;
+            weakSelf.photos = [[result reverseObjectEnumerator] allObjects];
+//            weakSelf.photos = result;
 		    if ([weakSelf.photos count]) {
 			    OBAsset *asset = [weakSelf.photos objectAtIndex:0];
 			    CGSize imageSize = asset.thumbnailImage.size;
